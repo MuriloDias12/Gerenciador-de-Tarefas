@@ -25,7 +25,7 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Long getId() {
+    public  Long getId() {
         return id;
     }
 
