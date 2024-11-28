@@ -1,34 +1,51 @@
 package Gerenciador.Tarefas.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
-import java.util.Objects;
+import java.time.LocalDate;
 
 @Entity
 public class Funcionario extends Pessoa {
-    private String fodase;
+    
+    @Column(nullable = false)
+    private LocalDate dataContratacao;
+    
     public Funcionario() {
     }
-
-    public String getFodase() {
-        return fodase;
+    
+    public LocalDate getDataContratacao() {
+        return dataContratacao;
     }
-
-    public void setFodase(String fodase) {
-        this.fodase = fodase;
+    
+    public void setDataContratacao(LocalDate dataContratacao) {
+        this.dataContratacao = dataContratacao;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Funcionario that = (Funcionario) o;
-        return Objects.equals(fodase, that.fodase);
-    }
-
+    
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), fodase);
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((dataContratacao == null) ? 0 : dataContratacao.hashCode());
+        return result;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Funcionario other = (Funcionario) obj;
+        if (dataContratacao == null) {
+            if (other.dataContratacao != null)
+                return false;
+        } else if (!dataContratacao.equals(other.dataContratacao))
+            return false;
+        return true;
+    }
+
+    
 }
